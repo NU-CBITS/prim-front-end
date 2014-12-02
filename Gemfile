@@ -38,6 +38,7 @@ group :development do
   gem 'capistrano-rvm', '~> 0.1', require: false
   gem 'capistrano-bundler', '~> 1.1.2'
   gem 'rubocop'
+  gem 'brakeman'
 end
 
 group :test do

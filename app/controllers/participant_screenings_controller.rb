@@ -52,7 +52,8 @@ class ParticipantScreeningsController < ApplicationController
   private
 
   def participant_screening_params
-    params.permit!
+    question_ids = @questions.map { |q| q.id.to_s }
+    params.permit(question_ids)
   end
 
   def set_questions

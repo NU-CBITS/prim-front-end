@@ -50,7 +50,6 @@ test:
   database: prim_test
   reconnect: false
   pool: 5
-  username: prim
   password:
   host: localhost
 
