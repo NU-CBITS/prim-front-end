@@ -1,5 +1,4 @@
 ## These are a set of default values for the simplemap template.
-## Author: Eric Schlange
 home: ' This is the header description for the home page. Include any highlights for the study.<br/>
         Add multiple lines with line break tags.'
 resource: ' <ul>

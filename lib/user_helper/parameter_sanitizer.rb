@@ -1,7 +1,6 @@
 module UserHelper
   # Helper used to permit several strong parameters that were
   # added to the default devise user model.
-  # @author Eric Schlange <eric.schlange@northwestern.edu>
   class ParameterSanitizer < Devise::ParameterSanitizer
     private
 

@@ -1,5 +1,4 @@
 # Helper methods for irb acceptance image manipulation.
-# @author Eric Schlange <eric.schlange@northwestern.edu>
 module IrbAcceptanceImagesHelper
   def retrieve_irb_acceptance_image(site_id)
     site_consent = Site.find(site_id).consent

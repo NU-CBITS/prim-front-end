@@ -1,9 +1,6 @@
 require 'rubygems'
 require 'active_resource'
 
-# Author::  Eric Schlange (mailto:eric.schlange@northwestern.edu)
-# License:: GPLv2
-
 # Registrations controller overwrites default Devise registration methods.
 class RegistrationsController < Devise::RegistrationsController
   before_action :set_site

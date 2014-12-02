@@ -1,5 +1,4 @@
 # Handles CRUD functionality for the about page of a site.
-# @author Eric Schlange <eric.schlange@northwestern.edu>
 class AboutController < ApplicationController
   PAGE_NAME = 'about'
 

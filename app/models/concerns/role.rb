@@ -1,6 +1,5 @@
 # A concern for specific role-related logic, used to
 # simplify usage of user roles.
-# @author Eric Schlange <eric.schlange@northwestern.edu>
 module Role
   extend ActiveSupport::Concern
 

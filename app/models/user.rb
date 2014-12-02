@@ -1,4 +1,3 @@
-# @author Eric Schlange <eric.schlange@northwestern.edu>
 # An administrative account. The default devise user model has been modified.
 class User < ActiveRecord::Base
   include Role

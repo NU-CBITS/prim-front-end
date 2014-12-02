@@ -1,4 +1,3 @@
-# @author Eric Schlange <eric.schlange@northwestern.edu>
 # Model object for site images. Utilizes Paperclip to store image files.
 class SiteImage < ActiveRecord::Base
   belongs_to :site

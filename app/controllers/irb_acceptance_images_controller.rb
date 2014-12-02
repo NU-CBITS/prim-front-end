@@ -1,6 +1,3 @@
-# Author::  Eric Schlange (mailto:eric.schlange@northwestern.edu)
-# License:: GPLv2
-
 # IrbAcceptanceImagesController handles requests to update or create new
 # viewable images.
 class IrbAcceptanceImagesController < ApplicationController

@@ -1,5 +1,4 @@
 # Handles altered confirmation controller logic for devise users.
-# @author Eric Schlange <eric.schlange@northwestern.edu>
 class ConfirmationsController < Devise::ConfirmationsController
   before_action :set_site
 

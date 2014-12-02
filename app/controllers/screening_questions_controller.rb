@@ -1,6 +1,3 @@
-# Author::  Eric Schlange (mailto:eric.schlange@northwestern.edu)
-# License:: GPLv2
-
 # ScreeningQuestionsController is a CRUD for screening questions.
 class ScreeningQuestionsController < ApplicationController
   before_action :set_site

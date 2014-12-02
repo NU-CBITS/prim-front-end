@@ -1,4 +1,3 @@
-# @author Eric Schlange <eric.schlange@northwestern.edu>
 require 'yaml'
 
 # A website for an Intervention.

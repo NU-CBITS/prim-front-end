@@ -1,5 +1,4 @@
 # Helper methods for site image manipulation.
-# @author Eric Schlange <eric.schlange@northwestern.edu>
 module SiteImagesHelper
   def retrieve_site_image_by_position(site_id, position)
     SiteImage

@@ -1,6 +1,3 @@
-# Author::  Eric Schlange (mailto:eric.schlange@northwestern.edu)
-# License:: GPLv2
-
 # ParticipantScreeningsController is used to manage participant screening,
 # including showing a site's screening questions as well as handling the
 # screening answer responses.

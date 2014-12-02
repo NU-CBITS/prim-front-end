@@ -1,5 +1,4 @@
 # Model object for irb acceptance images. Uses Paperclip to store image files.
-# @author Eric Schlange <eric.schlange@northwestern.edu>
 class IrbAcceptanceImage < ActiveRecord::Base
   belongs_to :consent
   belongs_to :user

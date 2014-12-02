@@ -1,6 +1,3 @@
-# Author::  Eric Schlange (mailto:eric.schlange@northwestern.edu)
-# License:: GPLv2
-
 # UserAdminController handles requests to update users, should only be
 # accessible to super user or admins.
 class UserAdminController < ApplicationController

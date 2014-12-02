@@ -1,5 +1,4 @@
 # Helper methods for the application.
-# @author Eric Schlange <eric.schlange@northwestern.edu>
 module ApplicationHelper
   def resource_name
     :user

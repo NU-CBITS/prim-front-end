@@ -1,5 +1,4 @@
 # Handles CRUD functionality for the home page of a site.
-# @author Eric Schlange <eric.schlange@northwestern.edu>
 class HomesController < ApplicationController
   before_action :set_homes, only: [:show, :edit, :update, :destroy]
   layout 'application'

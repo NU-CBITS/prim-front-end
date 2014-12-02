@@ -1,5 +1,4 @@
 # Handles toggling of user screening status.
-# @author Eric Schlange <eric.schlange@northwestern.edu>
 class UserScreeningFlagsController < ApplicationController
   before_action :set_user_screening_flag
 

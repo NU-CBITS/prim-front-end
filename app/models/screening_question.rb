@@ -1,4 +1,3 @@
-# @author Eric Schlange <eric.schlange@northwestern.edu>
 # A question within a Screening asked of a Participant.
 class ScreeningQuestion < ActiveRecord::Base
   belongs_to :site
