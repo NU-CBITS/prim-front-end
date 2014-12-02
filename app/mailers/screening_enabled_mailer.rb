@@ -8,8 +8,10 @@ class ScreeningEnabledMailer < ActionMailer::Base
   def screening_enabled_email(user, site, request)
     @user = user
     @site = site
-    @url_screener = "#{request.protocol}#{request.host_with_port}/sites/#{site.id}/participant_screenings"
-    @url_confirmation_email = "#{request.protocol}#{request.host_with_port}/sites/#{site.id}/users/confirmation/new"
+    @url_screener = "#{request.protocol}#{request.host_with_port}/sites/" \
+                    "#{site.id}/participant_screenings"
+    @url_confirmation_email = "#{request.protocol}#{request.host_with_port}" \
+                              "/sites/#{site.id}/users/confirmation/new"
     mail(to: @user.email, subject: 'Screening is now available.')
   end
 end

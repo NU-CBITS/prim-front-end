@@ -1,3 +1,4 @@
+# Methods for user consent views.
 module UserConsentHelper
   def retrieve_user_consent(site_id, user_id)
     UserConsent.where(site_id: site_id, user_id: user_id).first
@@ -9,7 +10,9 @@ module UserConsentHelper
       consent = UserConsent.where(site_id: site_id, user_id: user_id).first
       version_string = 'user consent'
       if consent && consent.site_consent_form_version_id
-        version_string = SiteConsentFormVersion.find(consent.site_consent_form_version_id).created_at.strftime('%Y/%m/%d')
+        version_string = SiteConsentFormVersion
+                         .find(consent.site_consent_form_version_id)
+                         .created_at.strftime('%Y/%m/%d')
       end
 
       link_to version_string,

@@ -1,8 +1,7 @@
 # Handles CRUD functionality for the about page of a site.
 # @author Eric Schlange <eric.schlange@northwestern.edu>
 class AboutController < ApplicationController
-
-  PAGE_NAME = "about"
+  PAGE_NAME = 'about'
 
   def index
     current_page(PAGE_NAME)
@@ -42,7 +41,9 @@ class AboutController < ApplicationController
 
     respond_to do |format|
       if @about.update_attributes(abouts_params)
-        format.html { redirect_to(@about, notice: 'About page was successfully updated.') }
+        format.html do
+          redirect_to(@about, notice: 'About page was successfully updated.')
+        end
         format.json { respond_with_bip @about }
       else
         format.html { render action: 'edit' }

@@ -33,15 +33,12 @@ class StatusesController < ApplicationController
 
   # PATCH/PUT /statuses/1
   def update
-    puts 'PARAMS::::' + params.inspect
-    statuses = Status.find(:all, :params => { :id => params[:id] })
-    puts '&&&' + statuses.inspect
+    statuses = Status.find(:all, params: { id: params[:id] })
     @status = statuses[0]
     @status.name = status_params[:name]
     @status.description = status_params[:description]
 
     respond_to do |format|
-      puts params.inspect
       if @status.save
         format.json { respond_with_bip @status }
       else
@@ -54,14 +51,17 @@ class StatusesController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def status_params
-    params.require(:status).permit(:id, :name, :description, :site_id, :participant_id)
+    params.require(:status)
+      .permit(:id, :name, :description, :site_id, :participant_id)
   end
 
   def set_status
     user = User.find(params[:user_id])
-    participants = Participant.find(:all, :params => {:external_id => user.external_id})
-    participant = participants[0]
-    statuses = Status.find(:all, :params => { :participant_id => participant.id })
-    @status = statuses[0]
+    participant = Participant
+                  .find(:all, params: { external_id: user.external_id })
+                  .first
+    @status = Status
+              .find(:all, params: { participant_id: participant.id })
+              .first
   end
 end

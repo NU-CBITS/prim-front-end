@@ -38,7 +38,9 @@ class SitesController < ApplicationController
 
     respond_to do |format|
       if @site.update_attributes(site_params)
-        format.html { redirect_to(@site, notice: 'site page was successfully updated.') }
+        format.html do
+          redirect_to(@site, notice: 'site page was successfully updated.')
+        end
         format.json { respond_with_bip @site }
       else
         format.html { render action: 'edit' }

@@ -10,13 +10,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_site
-
-  before_filter :set_cache_buster
+  before_action :set_cache_buster
 
   def set_cache_buster
-    response.headers["Cache-Control"] = "no-cache, no-store, max-age=0, must-revalidate"
-    response.headers["Pragma"] = "no-cache"
-    response.headers["Expires"] = "Fri, 01 Jan 1990 00:00:00 GMT"
+    response.headers['Cache-Control'] =
+      'no-cache, no-store, max-age=0, must-revalidate'
+    response.headers['Pragma'] = 'no-cache'
+    response.headers['Expires'] = 'Fri, 01 Jan 1990 00:00:00 GMT'
   end
 
   # Use callbacks to share common setup or constraints between actions.
@@ -28,19 +28,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  #rescue_from CanCan::AccessDenied do |exception|
-  #  render file: "#{Rails.root}/public/403.html", status: 403, layout: true, exception: exception
-  #end
-
   # Use to redirect to the correct site after login.
   def after_sign_in_path_for(resource)
-    puts resource.inspect
     site_user = SitesUser.find_by(user_id: resource.id)
     '/sites/' + site_user.site_id.to_s + '/pages/home'
   end
 
   # Use to redirect to the correct site after logout.
-  def after_sign_out_path_for(resource)
+  def after_sign_out_path_for(_resource)
     '/sites/' + params[:site_id] + '/pages/home'
   end
 
@@ -55,7 +50,9 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up).push(:id, :address, :dob, :street_1, :city, :state, :zip)
+    devise_parameter_sanitizer
+      .for(:sign_up)
+      .push(:id, :address, :dob, :street_1, :city, :state, :zip)
   end
 
   private

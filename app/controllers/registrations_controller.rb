@@ -12,11 +12,12 @@ class RegistrationsController < Devise::RegistrationsController
     build_resource(sign_up_params)
     resource.site_id = @site.id
     if resource.save
-      site_id = createConsentRecord(resource)
+      site_id = create_consent_record(resource)
       associate_site_with_user(resource, site_id)
-      predefinedUserCreation(resource)
+      predefined_user_creation(resource)
       save_prim_participant(sign_up_params, resource, site_id)
-      UserScreeningFlag.create(site_id: site_id, user_id: resource.id, active: false)
+      UserScreeningFlag
+        .create(site_id: site_id, user_id: resource.id, active: false)
     else
       clean_up_passwords resource
       respond_with resource
@@ -25,9 +26,8 @@ class RegistrationsController < Devise::RegistrationsController
 
   protected
 
-  def after_inactive_sign_up_path_for(resource)
-    site_user = SitesUser.find_by(user_id: resource.id)
-    '/sites/' + params[:site_id] + '/pages/home'
+  def after_inactive_sign_up_path_for(_resource)
+    "/sites/#{ params[:site_id] }/pages/home"
   end
 
   private
@@ -36,29 +36,36 @@ class RegistrationsController < Devise::RegistrationsController
     SitesUser.create(user_id: resource.id, site_id: site_id)
   end
 
-  def createConsentRecord(resource)
+  def create_consent_record(resource)
     consent = Consent.where(site_id: params[:site_id]).first
-    consentRecord = UserConsent.new(
-        user_id: resource.id,
-        site_id: consent.site.id,
-        consent_header: consent.header,
-        consent_body: consent.body,
-        consent_footer: consent.footer,
-        irb_acceptance_image_url: consent.irb_acceptance_images.nil? ? consent.irb_acceptance_images.first.image.url : 'no IRB image exists for this site.',
-        site_consent_form_version_id: SiteConsentFormVersion.where(site_id: consent.site.id).order('created_at desc').first.id
+    img_url = consent.irb_acceptance_images.try(:first).try(:image).try(:url)
+    version_id = SiteConsentFormVersion
+                 .where(site_id: consent.site.id)
+                 .order('created_at desc')
+                 .first.id
+    consent_record = UserConsent.new(
+      user_id: resource.id,
+      site_id: consent.site.id,
+      consent_header: consent.header,
+      consent_body: consent.body,
+      consent_footer: consent.footer,
+      irb_acceptance_image_url: img_url || 'no IRB image exists for this site.',
+      site_consent_form_version_id: version_id
     )
-    consentRecord.save
+    consent_record.save
     consent.site.id
   end
 
-  def predefinedUserCreation(resource)
+  def predefined_user_creation(resource)
     yield resource if block_given?
     if resource.active_for_authentication?
       set_flash_message :notice, :signed_up if is_flashing_format?
       sign_up(resource_name, resource)
       respond_with resource, location: after_sign_up_path_for(resource)
     else
-      set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_flashing_format?
+      if is_flashing_format?
+        set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}"
+      end
       expire_data_after_sign_in!
       respond_with resource, location: after_inactive_sign_up_path_for(resource)
     end
@@ -84,23 +91,32 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def redirect_if_already_signed_in_and_not_content_manager(authenticated)
-    if authenticated && (current_user.nil? || !current_user.at_least_a_content_manager?)
-      render file: "#{Rails.root}/public/403.html", status: 403, layout: true
-    end
+    return unless authenticated && (current_user.nil? ||
+                                    !current_user.at_least_a_content_manager?)
+
+    render file: "#{Rails.root}/public/403.html", status: 403, layout: true
   end
 
   def save_prim_participant(sign_up_params, resource, site_id)
     @participant = Participant.create
-    Email.create(email: sign_up_params[:email], primary: true, participant_id: @participant.id)
-    Phone.create(name: '', number: sign_up_params[:phone] , primary: true, participant_id: @participant.id)
+    Email.create(email: sign_up_params[:email],
+                 primary: true,
+                 participant_id: @participant.id)
+    Phone.create(name: '',
+                 number: sign_up_params[:phone],
+                 primary: true,
+                 participant_id: @participant.id)
     resource.external_id = @participant.external_id
     resource.save
-    Status.create(name: 'Screening in Progress', description: '', participant_id: @participant.id, final: false, site_id: site_id)
+    Status.create(name: 'Screening in Progress',
+                  description: '',
+                  participant_id: @participant.id,
+                  final: false,
+                  site_id: site_id)
     save_prim_participant_phi(sign_up_params, @participant.id)
   end
 
-  def save_prim_participant_phi(sign_up_params, participant_id)
-    puts params.inspect
+  def save_prim_participant_phi(_sign_up_params, participant_id)
     Address.create(
       street_1: params[:address][:street_1],
       city: params[:address][:city],
@@ -109,5 +125,4 @@ class RegistrationsController < Devise::RegistrationsController
       primary: true,
       participant_id: participant_id)
   end
-
 end

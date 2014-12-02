@@ -1,5 +1,5 @@
+# Manage Points of Contact.
 class PointOfContactsController < ApplicationController
-
   def index
   end
 
@@ -25,7 +25,8 @@ class PointOfContactsController < ApplicationController
     @point_of_contact = PointOfContact.new(point_of_contact_params)
 
     if @point_of_contact.save
-      redirect_to @point_of_contact, notice: 'Contact us was successfully created.'
+      redirect_to @point_of_contact,
+                  notice: 'Contact us was successfully created.'
     else
       render action: 'new'
     end
@@ -37,7 +38,10 @@ class PointOfContactsController < ApplicationController
 
     respond_to do |format|
       if @point_of_contact.update_attributes(point_of_contact_params)
-        format.html { redirect_to(@point_of_contact, notice: 'Point of contact was successfully updated.') }
+        format.html do
+          redirect_to(@point_of_contact,
+                      notice: 'Point of contact was successfully updated.')
+        end
         format.json { respond_with_bip @point_of_contact }
       else
         format.html { render action: 'edit' }
@@ -50,7 +54,8 @@ class PointOfContactsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def point_of_contact_params
-    params.require(:point_of_contact).permit(:title, :name, :site_id, :street_address, :city, :zip, :phone, :email)
+    params.require(:point_of_contact).permit(:title, :name, :site_id,
+                                             :street_address, :city, :zip,
+                                             :phone, :email)
   end
-
 end

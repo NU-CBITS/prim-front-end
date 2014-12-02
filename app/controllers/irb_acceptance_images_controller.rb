@@ -1,7 +1,8 @@
 # Author::  Eric Schlange (mailto:eric.schlange@northwestern.edu)
 # License:: GPLv2
 
-# IrbAcceptanceImagesController handles requests to update or create new viewable images.
+# IrbAcceptanceImagesController handles requests to update or create new
+# viewable images.
 class IrbAcceptanceImagesController < ApplicationController
   before_action :set_site
 
@@ -16,7 +17,9 @@ class IrbAcceptanceImagesController < ApplicationController
   def create
     respond_to do |format|
       irb_acceptance_image = IrbAcceptanceImage.new(irb_acceptance_image_params)
-      irb_acceptance_image.image_file_name = Time.now.strftime('%Y_%m_%d_%H%M%S') + irb_acceptance_image.image_file_name
+      irb_acceptance_image.image_file_name =
+        Time.now.strftime('%Y_%m_%d_%H%M%S') +
+        irb_acceptance_image.image_file_name
       irb_acceptance_image.save
       SiteConsentFormVersion.create(site: irb_acceptance_image.site)
 
@@ -31,9 +34,14 @@ class IrbAcceptanceImagesController < ApplicationController
 
   def update
     respond_to do |format|
-      irb_acceptance_image = IrbAcceptanceImage.where(consent_id: params[:irb_acceptance_image][:consent_id]).first
+      consent_id = params[:irb_acceptance_image][:consent_id]
+      irb_acceptance_image = IrbAcceptanceImage
+                             .where(consent_id: consent_id)
+                             .first
       irb_acceptance_image.image = params[:irb_acceptance_image][:image]
-      irb_acceptance_image.image_file_name = Time.now.strftime('%Y_%m_%d_%H%M%S') + irb_acceptance_image.image_file_name
+      irb_acceptance_image.image_file_name =
+        Time.now.strftime('%Y_%m_%d_%H%M%S') +
+        irb_acceptance_image.image_file_name
       irb_acceptance_image.save
       format.html { redirect_to :back }
       format.js
@@ -44,6 +52,7 @@ class IrbAcceptanceImagesController < ApplicationController
   private
 
   def irb_acceptance_image_params
-    params.require(:irb_acceptance_image).permit(:image, :position, :site_id, :consent_id)
+    params.require(:irb_acceptance_image)
+      .permit(:image, :position, :site_id, :consent_id)
   end
 end

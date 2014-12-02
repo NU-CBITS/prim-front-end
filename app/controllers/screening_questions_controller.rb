@@ -9,9 +9,13 @@ class ScreeningQuestionsController < ApplicationController
   def index
     authorize! :manage, current_user.role_identifier
 
-    @questions = ScreeningQuestion.where(site_id: @site.id).order(position: :asc)
+    @questions = ScreeningQuestion
+                 .where(site_id: @site.id)
+                 .order(position: :asc)
     @questions.each do |question|
-      question.screening_answers = ScreeningAnswer.where(screening_question_id: question.id).order(position: :asc)
+      question.screening_answers = ScreeningAnswer
+        .where(screening_question_id: question.id)
+        .order(position: :asc)
     end
 
     respond_to do |format|

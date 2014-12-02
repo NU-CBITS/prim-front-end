@@ -1,5 +1,5 @@
-# Model for the users. The default devise user model has been modified.
 # @author Eric Schlange <eric.schlange@northwestern.edu>
+# An administrative account. The default devise user model has been modified.
 class User < ActiveRecord::Base
   include Role
   has_many :user_consents
@@ -33,18 +33,23 @@ class User < ActiveRecord::Base
   end
 
   def role_identifier_enum
-    [ ['Super User', '1'], ['Admin', '2'], ['Content Manager', '3'], ['Participant', '4'] ]
+    [
+      %w(Super\ User 1),
+      %w(Admin 2),
+      %w(Content\ Manager 3),
+      %w(Participant 4)
+    ]
   end
 
   private
 
   def phone_format_validator
-    if self.phone
-      number = self.phone.tr('^0-9','' )
-      if number.length < 10 || number.length > 11
-        errors.add(:phone, "Phone number is not valid. Please include area code and seven digit number: (xxx-xxx-xxxx)")
-      end
-    end
-  end
+    return if phone.blank?
 
+    number = phone.tr('^0-9', '')
+    return if number.length == 10 || number.length == 11
+
+    errors.add(:phone, 'Phone number is not valid. Please include area code ' \
+                       'and seven digit number: (xxx-xxx-xxxx)')
+  end
 end

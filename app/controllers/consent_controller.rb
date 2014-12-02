@@ -1,3 +1,4 @@
+# Manage Consents.
 class ConsentController < ApplicationController
   before_action :set_consent, only: [:show, :edit, :update, :destroy]
 
@@ -38,7 +39,9 @@ class ConsentController < ApplicationController
     respond_to do |format|
       if @consent.update_attributes(consent_params)
         SiteConsentFormVersion.create(site: @consent.site)
-        format.html { redirect_to(@consent, notice: 'About page was successfully updated.') }
+        format.html do
+          redirect_to(@consent, notice: 'About page was successfully updated.')
+        end
         format.json { respond_with_bip @consent }
       else
         format.html { render action: 'edit' }

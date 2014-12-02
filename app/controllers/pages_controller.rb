@@ -2,5 +2,4 @@
 # These views are primarily for static, persisted content.
 # @author Eric Schlange <eric.schlange@northwestern.edu>
 class PagesController < ApplicationController
-
 end

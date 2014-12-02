@@ -17,7 +17,11 @@ class SiteImagesController < ApplicationController
     respond_to do |format|
       @site_image = SiteImage.new(site_image_params)
       @site_image.save
-      format.html { redirect_to '/sites/' + @site.id.to_s + '/pages/home', notice: 'Image was successfully updated.' }
+
+      format.html do
+        redirect_to "/sites/#{ @site.id }/pages/home",
+                    notice: 'Image was successfully updated.'
+      end
       format.js
       format.json { head :no_content }
     end
@@ -28,10 +32,17 @@ class SiteImagesController < ApplicationController
 
   def update
     respond_to do |format|
-      @site_image = SiteImage.where(site_id: params[:site_id], position: params[:site_image][:position]).first
+      @site_image = SiteImage
+                    .where(site_id: params[:site_id],
+                           position: params[:site_image][:position])
+                    .first
       @site_image.image = params[:site_image][:image]
       @site_image.save
-      format.html { redirect_to '/sites/' + @site.id.to_s + '/pages/home', notice: 'Image was successfully updated.' }
+
+      format.html do
+        redirect_to "/sites/#{ @site.id }/pages/home",
+                    notice: 'Image was successfully updated.'
+      end
       format.js
       format.json { head :no_content }
     end

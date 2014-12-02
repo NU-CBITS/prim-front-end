@@ -1,46 +1,19 @@
 AllCops:
-  Excludes:
-    - bin/**
-    - config/**
-    - db/schema.rb
-
-Documentation:
   Exclude:
-    - db/**
-    - spec/**
+    - bin/**/*
+    - config/**/*
+    - db/**/*
+    - vendor/**/*
+  RunRailsCops: true
 
-DotPosition:
-  Enabled: false
+AbcSize:
+  Max: 40
 
-FileName:
-  Exclude:
-    - db/**
+ClassLength:
+  Max: 200
 
-FinalNewline:
-  Enabled: false
-
-HandleExceptions:
-  Enabled: false
-
-HashSyntax:
-  Exclude:
-    - db/**
-
-IfUnlessModifier:
-  Enabled: false
-
-LineLength:
-  Enabled: false
+CyclomaticComplexity:
+  Max: 10
 
 MethodLength:
-  Exclude:
-    - db/**
-
-StringLiterals:
-  Enabled: false
-
-WordArray:
-  Enabled: false
-
-Encoding:
-  Enabled: false
+  Max: 35

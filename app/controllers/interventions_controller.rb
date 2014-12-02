@@ -40,7 +40,10 @@ class InterventionsController < ApplicationController
 
     respond_to do |format|
       if @intervention.update_attributes(intervention_params)
-        format.html { redirect_to(@intervention, notice: 'Intervention page was successfully updated.') }
+        format.html do
+          redirect_to(@intervention,
+                      notice: 'Intervention page was successfully updated.')
+        end
         format.json { respond_with_bip @intervention }
       else
         format.html { render action: 'edit' }
