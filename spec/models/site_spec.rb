@@ -2,62 +2,47 @@
 require 'spec_helper'
 
 describe Site do
-
-  it 'has a valid factory' do
-    FactoryGirl.create(:site).should be_valid
+  let(:site) do
+    Site.create!(name: Faker::Company.name,
+                 content: Faker::Lorem.paragraph(2),
+                 template_name: 'simplemap')
   end
 
+  before { site.create_default_site_content }
+
   it 'has a valid Home after create_default_site_content' do
-    site = create(:site)
-    site.create_default_site_content
-    site.home.title != nil
+    expect(site.home.title).not_to be_nil
   end
 
   it 'has a valid Resource after create_default_site_content' do
-    site = create(:site)
-    site.create_default_site_content
-    site.resource.title != nil
+    expect(site.resource.title).not_to be_nil
   end
 
   it 'has a valid About after create_default_site_content' do
-    site = create(:site)
-    site.create_default_site_content
-    site.about.title != nil
+    expect(site.about.title).not_to be_nil
   end
 
   it 'has a valid Consent after create_default_site_content' do
-    site = create(:site)
-    site.create_default_site_content
-    site.consent.header != nil
+    expect(site.consent.header).not_to be_nil
   end
 
   it 'has a valid ContactUs after create_default_site_content' do
-    site = create(:site)
-    site.create_default_site_content
-    site.contact_us.title != nil
+    expect(site.contact_us.title).not_to be_nil
   end
 
   it 'has a valid Eligibility after create_default_site_content' do
-    site = create(:site)
-    site.create_default_site_content
-    site.eligibility.title != nil
+    expect(site.eligibility.title).not_to be_nil
   end
 
   it 'has a valid Funding after create_default_site_content' do
-    site = create(:site)
-    site.create_default_site_content
-    site.funding.title != nil
+    expect(site.funding.title).not_to be_nil
   end
 
   it 'has a valid Intervention after create_default_site_content' do
-    site = create(:site)
-    site.create_default_site_content
-    site.intervention.name != nil
+    expect(site.intervention.name).not_to be_nil
   end
 
   it 'has a valid PointOfContact after create_default_site_content' do
-    site = create(:site)
-    site.create_default_site_content
-    site.point_of_contact.title != nil
+    expect(site.point_of_contact.title).not_to be_nil
   end
 end

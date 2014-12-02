@@ -30,7 +30,6 @@ gem 'activeresource', '~> 4.0.0'
 
 group :development, :test do
   gem "rspec-rails", "~> 3.0.1"
-  gem "factory_girl_rails"
 end
 
 group :development do
@@ -38,6 +37,7 @@ group :development do
   gem 'capistrano-rails', '~> 1.1', require: false
   gem 'capistrano-rvm', '~> 0.1', require: false
   gem 'capistrano-bundler', '~> 1.1.2'
+  gem 'rubocop'
 end
 
 group :test do
