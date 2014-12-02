@@ -29,7 +29,7 @@ gem 'paperclip', '~> 4.1'
 gem 'activeresource', '~> 4.0.0'
 
 group :development, :test do
-  gem 'rspec-rails', '~> 3.0.1'
+  gem 'rspec-rails', '~> 3.1'
 end
 
 group :development do

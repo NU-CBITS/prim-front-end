@@ -1,7 +1,6 @@
-# spec/models/site.rb
-require 'spec_helper'
+require 'rails_helper'
 
-describe Site do
+RSpec.describe Site, type: :model do
   let(:site) do
     Site.create!(name: Faker::Company.name,
                  content: Faker::Lorem.paragraph(2),

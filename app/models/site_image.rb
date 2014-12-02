@@ -4,7 +4,7 @@ class SiteImage < ActiveRecord::Base
   belongs_to :user
 
   validates :position, presence: true
-  validates :position, uniqueness: true, scope: :site_id
+  validates :position, uniqueness: { scope: :site_id }
 
   has_attached_file :image,
                     styles: { medium: '300x300>', thumb: '100x100>' },

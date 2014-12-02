@@ -1,7 +1,6 @@
-require_relative '../spec_helper'
-require 'user'
+require 'rails_helper'
 
-describe User do
+RSpec.describe User, type: :model do
   it 'role should be initialized to a participant' do
     user = User.create
     expect(user.role_name).to eq('participant')
