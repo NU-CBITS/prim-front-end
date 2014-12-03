@@ -1,8 +1,11 @@
 # Handles CRUD functionality for the eligibility page of a site.
 class EligibilitiesController < ApplicationController
+  before_action :authenticate_user!
+
   # PATCH/PUT /eligibilities/1
   def update
     @eligibility = Eligibility.find(params[:id])
+    authorize! :update, @eligibility
 
     respond_to do |format|
       if @eligibility.update_attributes(eligibility_params)

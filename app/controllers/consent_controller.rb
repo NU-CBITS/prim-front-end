@@ -1,8 +1,11 @@
 # Manage Consents.
 class ConsentController < ApplicationController
+  before_action :authenticate_user!
+
   # PATCH/PUT /consent/1
   def update
-    @consent = Consent.find params[:id]
+    @consent = Consent.find(params[:id])
+    authorize! :update, @consent
 
     respond_to do |format|
       if @consent.update_attributes(consent_params)

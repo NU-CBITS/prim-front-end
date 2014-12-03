@@ -2,10 +2,10 @@ PrimFrontEnd::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   ## START Resources
-  resources :sites do
+  resources :sites, only: [:create, :update] do
     get "pages/home"
-    resources :site_images, param: :position
-    resources :irb_acceptance_images
+    resources :site_images, param: :position, only: [:create, :update]
+    resources :irb_acceptance_images, only: [:create, :update]
   end
   resources :users, only: [:edit, :update]
   resources :about, only: :update

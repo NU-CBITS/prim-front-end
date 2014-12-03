@@ -1,8 +1,11 @@
 # Handles CRUD functionality for the about page of a site.
 class AboutController < ApplicationController
+  before_action :authenticate_user!
+
   # PATCH/PUT /abouts/1
   def update
-    @about = About.find params[:id]
+    @about = About.find(params[:id])
+    authorize! :update, @about
 
     respond_to do |format|
       if @about.update_attributes(abouts_params)

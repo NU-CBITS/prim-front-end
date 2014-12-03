@@ -1,27 +1,10 @@
 # Handles CRUD functionality for sites management.
 class SitesController < ApplicationController
-  before_action :set_site, only: [:show, :edit, :update, :destroy]
-
-  # GET /sites
-  def index
-    @sites = Site.all
-  end
-
-  # GET /sites/1
-  def show
-  end
-
-  # GET /sites/new
-  def new
-    @site = Site.new
-  end
-
-  # GET /sites/1/edit
-  def edit
-  end
+  before_action :authenticate_user!
 
   # POST /sites
   def create
+    authorize! :create, Site
     @site = Site.new(site_params)
 
     if @site.save
@@ -33,7 +16,8 @@ class SitesController < ApplicationController
 
   # PATCH/PUT /sites/1
   def update
-    @site = Site.find params[:id]
+    @site = Site.find(params[:id])
+    authorize! :update, @site
 
     respond_to do |format|
       if @site.update_attributes(site_params)

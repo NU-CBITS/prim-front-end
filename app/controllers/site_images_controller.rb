@@ -1,16 +1,13 @@
 # SiteImagesController handles requests to update or create new viewable images.
 class SiteImagesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_site
 
   protect_from_forgery except: :create
 
-  def show
-  end
-
-  def new
-  end
-
   def create
+    authorize! :create, SiteImage
+
     respond_to do |format|
       @site_image = SiteImage.new(site_image_params)
       @site_image.save
@@ -24,15 +21,13 @@ class SiteImagesController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def update
     respond_to do |format|
       @site_image = SiteImage
                     .where(site_id: params[:site_id],
                            position: params[:site_image][:position])
                     .first
+      authorize! :update, @site_image
       @site_image.image = params[:site_image][:image]
       @site_image.save
 

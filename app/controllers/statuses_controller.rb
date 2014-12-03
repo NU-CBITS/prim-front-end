@@ -1,39 +1,13 @@
 # Handles view functionality for the views of the participants and guests.
 # These views are primarily for static, persisted content.
 class StatusesController < ApplicationController
-  before_action :set_status, only: [:edit, :update, :destroy]
-
-  # GET /statuses/1
-  def show
-    respond_to do |format|
-      format.js
-    end
-  end
-
-  # GET /statuses/new
-  def new
-    @status = Status.new
-  end
-
-  # GET /statuses/1/edit
-  def edit
-  end
-
-  # POST /statuses
-  def create
-    @status = Status.new(status_params)
-
-    if @status.save
-      redirect_to @status, notice: 'Status was successfully created.'
-    else
-      render action: 'new'
-    end
-  end
+  before_action :authenticate_user!
 
   # PATCH/PUT /statuses/1
   def update
     statuses = Status.find(:all, params: { id: params[:id] })
     @status = statuses[0]
+    authorize! :update, @status
     @status.name = status_params[:name]
     @status.description = status_params[:description]
 
@@ -52,15 +26,5 @@ class StatusesController < ApplicationController
   def status_params
     params.require(:status)
       .permit(:id, :name, :description, :site_id, :participant_id)
-  end
-
-  def set_status
-    user = User.find(params[:user_id])
-    participant = Participant
-                  .find(:all, params: { external_id: user.external_id })
-                  .first
-    @status = Status
-              .find(:all, params: { participant_id: participant.id })
-              .first
   end
 end

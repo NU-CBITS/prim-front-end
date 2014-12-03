@@ -1,6 +1,6 @@
 # Handles CRUD functionality for the home page of a site.
 class HomesController < ApplicationController
-  layout 'application'
+  before_action :authenticate_user!, except: :reload_header
 
   def reload_header
     render partial: 'pages/' + @site.template_name + '/shared/header'
@@ -9,6 +9,7 @@ class HomesController < ApplicationController
   # PATCH/PUT /homes/1
   def update
     @home = Home.find(params[:id])
+    authorize! :update, @home
 
     respond_to do |format|
       if @home.update_attributes(homes_params)

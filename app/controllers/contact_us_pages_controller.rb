@@ -1,8 +1,11 @@
 # Handles CRUD functionality for the 'contact us' page of a site.
 class ContactUsPagesController < ApplicationController
+  before_action :authenticate_user!
+
   # PATCH/PUT /contact_us_pages/1
   def update
     @contact_us_page = ContactUsPage.find(params[:id])
+    authorize! :update, @contact_us_page
 
     respond_to do |format|
       if @contact_us_page.update_attributes(contact_us_page_params)

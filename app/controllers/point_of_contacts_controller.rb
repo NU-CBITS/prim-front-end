@@ -1,8 +1,11 @@
 # Manage Points of Contact.
 class PointOfContactsController < ApplicationController
+  before_action :authenticate_user!
+
   # PATCH/PUT /point_of_contacts/1
   def update
     @point_of_contact = PointOfContact.find(params[:id])
+    authorize! :update, @point_of_contact
 
     respond_to do |format|
       if @point_of_contact.update_attributes(point_of_contact_params)

@@ -1,8 +1,11 @@
 # Handles CRUD functionality for the resources pages.
 class ResourcesController < ApplicationController
+  before_action :authenticate_user!
+
   # PATCH/PUT /resources/1
   def update
     @resource = Resource.find(params[:id])
+    authorize! :update, @resource
 
     respond_to do |format|
       if @resource.update_attributes(resource_params)

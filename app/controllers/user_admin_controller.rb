@@ -1,11 +1,11 @@
 # UserAdminController handles requests to update users, should only be
 # accessible to super user or admins.
 class UserAdminController < ApplicationController
-  before_action :set_site, :authenticate_user!
+  before_action :authenticate_user!, :set_site
 
   # GET /sites
   def index
-    authorize! :manage, current_user.role_identifier
+    authorize! :manage, User
     @users = User.joins(:sites_users)
              .order(column_sort)
              .paginate(page: params[:page], per_page: 25)

@@ -2,7 +2,7 @@
 # including showing a site's screening questions as well as handling the
 # screening answer responses.
 class ParticipantScreeningsController < ApplicationController
-  before_action :set_site, :authenticate_user!, :set_questions
+  before_action :authenticate_user!, :set_site, :set_questions
 
   # GET /sites/1/participant_screenings
   def index
@@ -22,7 +22,6 @@ class ParticipantScreeningsController < ApplicationController
 
     # rubocop:disable Metrics/LineLength
     @questions.each do |question|
-
       if question.question_type == 'CHECK_BOX'
         answers = ''
         question.screening_answers.each do |answer|

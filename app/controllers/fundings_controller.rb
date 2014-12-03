@@ -1,8 +1,11 @@
 # Handles CRUD functionality for the funding page of a site.
 class FundingsController < ApplicationController
+  before_action :authenticate_user!
+
   # PATCH/PUT /fundings/1
   def update
     @funding = Funding.find(params[:id])
+    authorize! :update, @funding
 
     respond_to do |format|
       if @funding.update_attributes(funding_params)

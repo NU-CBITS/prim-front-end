@@ -1,10 +1,11 @@
 # ScreeningQuestionsController is a CRUD for screening questions.
 class ScreeningQuestionsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_site
 
   # GET /sites/1/participant_screenings
   def index
-    authorize! :manage, current_user.role_identifier
+    authorize! :manage, ScreeningQuestion
 
     @questions = ScreeningQuestion
                  .where(site_id: @site.id)
