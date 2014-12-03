@@ -1,6 +1,6 @@
 require 'yaml'
 
-# A website for an Intervention.
+# A website for a Project.
 class Site < ActiveRecord::Base
   after_create :create_default_site_content
 
@@ -10,7 +10,7 @@ class Site < ActiveRecord::Base
   has_one :eligibility
   has_one :funding
   has_one :resource
-  has_one :intervention
+  has_one :project
   has_one :consent
   has_one :point_of_contact
   has_many :site_images
@@ -26,8 +26,8 @@ class Site < ActiveRecord::Base
     create_contact_us_page(title: 'Contact Us', content: defaults['contact_us'])
     create_eligibility(title: 'Eligibility', content: defaults['eligibility'])
     create_funding(title: 'Funding', content: defaults['funding'])
-    create_intervention(name: 'Intervention',
-                        description: defaults['intervention'])
+    create_project(name: 'Project',
+                   description: defaults['project'])
     create_point_of_contact(title: 'title',
                             name: 'name',
                             street_address: 'street address',

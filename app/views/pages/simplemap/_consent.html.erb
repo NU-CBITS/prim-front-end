@@ -1,31 +1,31 @@
 <div class="divider"></div>
 
-<section class="intervention">
+<section class="project">
   <div class="container text-left">
       <%= best_in_place_if (user_signed_in? and current_user.at_least_a_content_manager?),
          @site.consent,
          :header,
-         :type => :textarea,
-         :path => consent_path(@site.consent.id),
-         :sanitize => false,
-         :display_with => lambda { |consentContent| (consentContent).html_safe },
-         :html_attrs => { style: 'width:100%;' } %>
+         type: :textarea,
+         path: consent_path(@site.consent.id),
+         sanitize: false,
+         display_with: lambda { |consentContent| (consentContent).html_safe },
+         html_attrs: { style: 'width:100%;' } %>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<section class="intervention-long">
+<section class="project-long">
   <div class="container text-left">
     <p>
         <%= best_in_place_if (user_signed_in? and current_user.at_least_a_content_manager?),
          @site.consent,
          :body,
-         :type => :textarea,
-         :path => consent_path(@site.consent.id),
-         :sanitize => false,
-         :display_with => lambda { |consentContent| (consentContent).html_safe },
-         :html_attrs => { style: 'width:100%;' } %>
+         type: :textarea,
+         path: consent_path(@site.consent.id),
+         sanitize: false,
+         display_with: lambda { |consentContent| (consentContent).html_safe },
+         html_attrs: { style: 'width:100%;' } %>
     </p>
   </div>
 </section>
@@ -38,11 +38,11 @@
         <%= best_in_place_if (user_signed_in? and current_user.at_least_a_content_manager?),
          @site.consent,
          :footer,
-         :type => :textarea,
-         :path => consent_path(@site.consent.id),
-         :sanitize => false,
-         :display_with => lambda { |consentContent| (consentContent).html_safe },
-         :html_attrs => { style: 'width:100%;' } %>
+         type: :textarea,
+         path: consent_path(@site.consent.id),
+         sanitize: false,
+         display_with: lambda { |consentContent| (consentContent).html_safe },
+         html_attrs: { style: 'width:100%;' } %>
     </p>
   </div>
 </section>

@@ -21,7 +21,7 @@ SitesUser.create(
   site_id: 1)
 
 =begin
-Intervention.create(
+Project.create(
 :id => 1,
 :name => 'Purpose of Research',
 :description =>

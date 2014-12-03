@@ -37,8 +37,8 @@ RSpec.describe Site, type: :model do
     expect(site.funding.title).not_to be_nil
   end
 
-  it 'has a valid Intervention after create_default_site_content' do
-    expect(site.intervention.name).not_to be_nil
+  it 'has a valid Project after create_default_site_content' do
+    expect(site.project.name).not_to be_nil
   end
 
   it 'has a valid PointOfContact after create_default_site_content' do

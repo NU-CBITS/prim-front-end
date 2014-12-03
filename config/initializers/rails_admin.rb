@@ -34,7 +34,7 @@ RailsAdmin.config do |config|
     'Eligibility',
     'Funding',
     'Home',
-    'Intervention',
+    'Project',
     'Resource',
     'PointOfContact',
     'PrimEngine::Participant',

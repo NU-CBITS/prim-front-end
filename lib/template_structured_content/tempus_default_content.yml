@@ -90,7 +90,7 @@ funding: '  <table class="table">
               </tbody>
             </table>'
 
-intervention: ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consectetur metus a elit commodo, eu bibendum metus lobortis. Nulla facilisi.
-                Sed non arcu ac mauris porttitor varius. <br /> <br /> Vestibulum aliquet posuere risus. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit. Sed id dui purus. Quisque semper sollicitudin quam, at lacinia neque posuere eu. In posuere molestie diam nec tempus. Vestibulum at varius elit,
-                non tincidunt nisl.'
+project: ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consectetur metus a elit commodo, eu bibendum metus lobortis. Nulla facilisi.
+           Sed non arcu ac mauris porttitor varius. <br /> <br /> Vestibulum aliquet posuere risus. Lorem ipsum dolor sit amet, consectetur adipiscing
+           elit. Sed id dui purus. Quisque semper sollicitudin quam, at lacinia neque posuere eu. In posuere molestie diam nec tempus. Vestibulum at varius elit,
+           non tincidunt nisl.'

@@ -21,7 +21,7 @@
   <div class="modal-body">
     <div class="divider"></div>
 
-    <section class="intervention">
+    <section class="project">
       <div class="container text-left">
         <%= retrieve_user_consent(site_id, user_id).consent_header.html_safe %>
       </div>
@@ -29,7 +29,7 @@
 
     <div class="divider"></div>
 
-    <section class="intervention-long">
+    <section class="project-long">
       <div class="container text-left">
         <%= retrieve_user_consent(site_id, user_id).consent_body.html_safe %>
       </div>
