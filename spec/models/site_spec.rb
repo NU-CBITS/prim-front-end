@@ -26,7 +26,7 @@ RSpec.describe Site, type: :model do
   end
 
   it 'has a valid ContactUs after create_default_site_content' do
-    expect(site.contact_us.title).not_to be_nil
+    expect(site.contact_us_page.title).not_to be_nil
   end
 
   it 'has a valid Eligibility after create_default_site_content' do

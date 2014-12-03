@@ -8,17 +8,17 @@
               <h5 class="title" style="text-align: left;">
                 <a href="#">
                   <%= best_in_place_if (user_signed_in? and current_user.at_least_a_content_manager?),
-                                       @site.contact_us,
+                                       @site.contact_us_page,
                                        :title,
-                                       :path => contact_u_path(@site.contact_us.id),
+                                       :path => contact_u_path(@site.contact_us_page.id),
                                        :sanitize => false,
                                        :display_with => lambda { |contactTitle| (contactTitle).html_safe } %>
                 </a>
               </h5>
               <%= best_in_place_if (user_signed_in? and current_user.at_least_a_content_manager?),
-                                   @site.contact_us,
+                                   @site.contact_us_page,
                                    :content, :type => :textarea,
-                                   :path => contact_u_path(@site.contact_us.id),
+                                   :path => contact_u_path(@site.contact_us_page.id),
                                    :sanitize => false,
                                    :display_with => lambda { |contactUsContent| (contactUsContent).html_safe },
                                    :html_attrs => { style: 'width:100%;' }

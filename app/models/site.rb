@@ -6,7 +6,7 @@ class Site < ActiveRecord::Base
 
   has_one :about
   has_one :home
-  has_one :contact_us
+  has_one :contact_us_page
   has_one :eligibility
   has_one :funding
   has_one :resource
@@ -23,7 +23,7 @@ class Site < ActiveRecord::Base
     create_consent(header: defaults['consent']['header'],
                    body: defaults['consent']['body'],
                    footer: defaults['consent']['footer'])
-    create_contact_us(title: 'Contact Us', content: defaults['contact_us'])
+    create_contact_us_page(title: 'Contact Us', content: defaults['contact_us'])
     create_eligibility(title: 'Eligibility', content: defaults['eligibility'])
     create_funding(title: 'Funding', content: defaults['funding'])
     create_intervention(name: 'Intervention',
