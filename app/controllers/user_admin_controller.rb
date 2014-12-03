@@ -13,7 +13,7 @@ class UserAdminController < ApplicationController
       next unless user.external_id
       begin
         user.participant = Participant.find(
-          all, params: { external_id: user.external_id }
+          :all, params: { external_id: user.external_id }
         ).first
         user.status = Status.find(
           :all, params: { participant_id: user.participant.id }
