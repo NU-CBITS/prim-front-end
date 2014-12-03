@@ -2,22 +2,20 @@ PrimFrontEnd::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   ## START Resources
-  resources :interventions
   resources :sites do
     get "pages/home"
     resources :site_images, param: :position
     resources :irb_acceptance_images
   end
   resources :users, only: [:edit, :update]
-  resources :about
-  resources :homes
-  resources :contact_us
-  resources :eligibilities
-  resources :fundings
-  resources :resources
-  resources :intervention
-  resources :consent
-  resources :point_of_contacts
+  resources :about, only: :update
+  resources :homes, only: :update
+  resources :contact_us_pages, only: :update
+  resources :eligibilities, only: :update
+  resources :fundings, only: :update
+  resources :resources, only: :update
+  resources :consent, only: :update
+  resources :point_of_contacts, only: :update
   ## END Resources
 
   ## START Devise routes configuration

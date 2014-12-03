@@ -1,37 +1,5 @@
 # Manage Consents.
 class ConsentController < ApplicationController
-  before_action :set_consent, only: [:show, :edit, :update, :destroy]
-
-  # GET /consent
-  def index
-    @consent = Consent.all
-  end
-
-  # GET /consent/1
-  def show
-  end
-
-  # GET /consent/new
-  def new
-    @consent = Consent.new
-  end
-
-  # GET /consent/1/edit
-  def edit
-  end
-
-  # POST /consent
-  def create
-    @consent = Consent.new(consent_params)
-
-    if @consent.save
-      redirect_to @consent,
-                  notice: 'Contact us was successfully created.'
-    else
-      render action: 'new'
-    end
-  end
-
   # PATCH/PUT /consent/1
   def update
     @consent = Consent.find params[:id]
@@ -40,7 +8,7 @@ class ConsentController < ApplicationController
       if @consent.update_attributes(consent_params)
         SiteConsentFormVersion.create(site: @consent.site)
         format.html do
-          redirect_to(@consent, notice: 'About page was successfully updated.')
+          redirect_to(@consent, notice: 'Consent was successfully updated.')
         end
         format.json { respond_with_bip @consent }
       else
@@ -51,11 +19,6 @@ class ConsentController < ApplicationController
   end
 
   private
-
-  # Use callbacks to share common setup or constraints between actions.
-  def set_consent
-    @consent = Consent.find(params[:id])
-  end
 
   # Only allow a trusted parameter "white list" through.
   def consent_params
