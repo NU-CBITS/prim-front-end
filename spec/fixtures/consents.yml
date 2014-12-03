@@ -1,0 +1,39 @@
+stepped_care:
+  site: stepped_care
+  header: " <table class=\"table table-short\"> <tr><td>Consent header</td></tr>
+    <tr><td>PROTOCOL TITLE</td><td>Study title</td></tr> <tr><td>PRINCIPAL INVESTIGATOR</td><td>study
+    principal investigator</td></tr> <tr><td>SUPPORTED BY</td><td>supporting organization</td></tr>
+    </table>"
+  body: "<strong>About the study:</strong>\n<br><br>\nThe research team at Northwestern
+    University’s Center for Behavioral Intervention Technologies (CBITs) is currently
+    working on Stepped Care, a five-year research project funded by a grant from
+    the National Institute of Mental Health (NIMH).\n<br><br>\nThe researchers are
+    currently looking for participants for this study, which uses technology to
+    help make treatments for depression more affordable and easier for people to
+    access. Participants in this study will receive therapy for depression either
+    by telephone with a therapist, or through a website with weekly consultations
+    from a therapist.  As all therapy sessions will take place over the telephone
+    or online, visiting the research center will not be necessary.    \n<br><br>\n<strong>Types
+    of therapy:</strong>\n<br><br>\nEligible and interested participants will be
+    randomly assigned to receive one of two interventions:\n<br><br>\n1)     Telephone
+    Administered Cognitive Behavioral Therapy (T-CBT): A weekly, 50-minute therapy
+    session over the phone with a licensed clinician; or\n<br><br>\n2)     Stepped
+    Care: Internet Administered Cognitive Behavioral Therapy (iCBT), with regular
+    10 minute phone calls from a licensed clinician + the opportunity to receive
+    telephone administered-CBT if indicated by the clinician.  \n<br><br>\nTreatment
+    lasts for a maximum of 20 weeks in all interventions.  If depression symptoms
+    improve, treatment may be ended earlier than 20 weeks.  \n<br><br>\nAs a participant
+    in this study, you may experience improvements in your mood and/ or quality
+    of life.  Your participation will also help researchers get a better understanding
+    of different treatment methods for depression.  And in addition to receiving
+    therapy free of charge, study participants will be compensated for completing
+    telephone interviews and questionnaires online.\n<br><br>\nIf you have regular
+    access to internet connectivity and a phone that can support weekly telephone
+    therapy sessions for up to 50 minutes in length, we encourage you to complete
+    the form (at the bottom of the page), and you will be contacted by our research
+    staff shortly."
+  footer: |-
+    In order to determine eligibility, all interested participants will be asked to complete preliminary interviews and online questionnaires regarding their recent mood and technology use. <br><br>
+    We are recruiting individuals who are currently experiencing clinical symptoms of depression. Having a diagnosis of depression from a doctor is not necessary for participation. All participants in this study <strong> must be at least 18 years of age</strong>, and <strong>have proficient experience and understanding of using the internet</strong>. <br><br>
+    At this time, our clinicians can only offer treatment to English-speaking individuals and those who can read, hear and see well enough to complete the interviews and questionnaires associated with this study.  If you are currently receiving therapy from another source, this study may not be a good fit for you. Lastly, we are studying experimental treatments for depression-- if you’re experiencing symptoms related to other mental health disorders, this study may not be a good fit. <br><br>
+    For more information regarding eligibility and how you might get involved in our research, we encourage you click the link below to complete our informational screener.

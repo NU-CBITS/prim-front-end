@@ -39,6 +39,8 @@ group :development do
   gem 'capistrano-bundler', '~> 1.1.2'
   gem 'rubocop'
   gem 'brakeman'
+  gem 'spring'
+  gem 'spring-commands-rspec'
 end
 
 group :test do

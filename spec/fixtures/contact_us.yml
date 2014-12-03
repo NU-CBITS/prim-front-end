@@ -1,0 +1,4 @@
+stepped_care:
+  site_id: <%= Site.find_by_name('Stepped Care').id %>
+  title: Stepped care
+  content: Lorem ipsum
