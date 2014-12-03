@@ -18,8 +18,12 @@ task load_fixtures: :environment do
   ActiveRecord::FixtureSet.create_fixtures(path, [
     :sites,
     :abouts,
-    :homes,
     :consents,
+    :contact_us_pages,
+    :eligibilities,
+    :fundings,
+    :homes,
+    :resources,
     :site_consent_form_versions
   ])
 end

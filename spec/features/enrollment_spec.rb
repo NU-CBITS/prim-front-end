@@ -23,5 +23,9 @@ RSpec.describe 'enrollment', type: :feature do
 
     expect(page.body).to have_text 'A message with a confirmation link has ' \
                                    'been sent to your email address.'
+    last_email = ActionMailer::Base.deliveries.last
+
+    expect(last_email.subject).to eq 'Confirmation instructions'
+    expect(last_email.to).to include 'henry.ford@example.com'
   end
 end
