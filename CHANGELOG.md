@@ -1,3 +1,9 @@
+## 0.2.0
+
+### Features
+
+  * authenticates with token against PRIM Resources
+
 ## 0.1.0
 
 ### Updates
