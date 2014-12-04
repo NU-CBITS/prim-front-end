@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141203195851) do
+ActiveRecord::Schema.define(version: 20141204135351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,10 +33,8 @@ ActiveRecord::Schema.define(version: 20141203195851) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "site_id"
-    t.integer  "irb_acceptance_image_id"
   end
 
-  add_index "consents", ["irb_acceptance_image_id"], name: "index_consents_on_irb_acceptance_image_id", using: :btree
   add_index "consents", ["site_id"], name: "index_consents_on_site_id", using: :btree
 
   create_table "contact_us_pages", force: true do |t|
@@ -126,11 +124,6 @@ ActiveRecord::Schema.define(version: 20141203195851) do
   end
 
   add_index "resources", ["site_id"], name: "index_resources_on_site_id", using: :btree
-
-  create_table "roles", force: true do |t|
-    t.string "name"
-    t.string "description"
-  end
 
   create_table "screening_answers", force: true do |t|
     t.integer "screening_question_id"
