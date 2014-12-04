@@ -1,5 +1,5 @@
 class AddForeignKeyConstraints < ActiveRecord::Migration
-  def up
+  def change
     reversible do |dir|
       dir.up do
         execute <<-SQL

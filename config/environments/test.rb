@@ -36,4 +36,6 @@ PrimFrontEnd::Application.configure do
   config.active_support.deprecation = :stderr
 
   config.papi_url = 'http://localhost:3001/v1'
+
+  config.prim_resources_token = 'token'
 end
